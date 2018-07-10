@@ -22,6 +22,7 @@ if __name__ == '__main__':
     pic_file = r'./template/004_bak.jpg'
     template_file = r'./template/template_06.jpg'
 
+
     pt1 = None
     pt2 = None
 
