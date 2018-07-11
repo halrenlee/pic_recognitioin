@@ -2,3 +2,4 @@ import pytesseract
 
 
 print("-------------------")
+
