@@ -3,7 +3,6 @@
 import cv2
 import tkinter.messagebox as box
 
-
 def show(event,x,y,flags,param):
     global  pt1, pt2, img, template_file
     if event == cv2.EVENT_LBUTTONDOWN:
@@ -22,7 +21,6 @@ if __name__ == '__main__':
     pic_file = r'./template/004_bak.jpg'
     template_file = r'./template/template_06.jpg'
 
-
     pt1 = None
     pt2 = None
 
@@ -31,3 +29,4 @@ if __name__ == '__main__':
     cv2.setMouseCallback('test', show)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+

@@ -9,7 +9,6 @@ import pytesseract
 import logging
 import aircv as ac
 
-
 logging.basicConfig(level=1,format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: '
                                    '%(message)s')
 
@@ -133,7 +132,7 @@ if __name__ == '__main__':
 
     # parsePics(tgt_path, suffix, parse_path)
 
-    img_file = r'./template/003_bak.jpg'
+    img_file = r'./template/002_bak.jpg'
     templ_file = r'./template/template_06.jpg'
     queryImage = cv2.imread(img_file)
     trainImage = cv2.imread(templ_file)
