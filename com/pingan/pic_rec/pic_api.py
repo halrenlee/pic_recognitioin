@@ -1,3 +1,7 @@
 import pytesseract
 
 
+
+
+print("----------------")
+
