@@ -5,3 +5,13 @@ import pytesseract
 
 print("----------------")
 
+
+
+
+
+
+
+
+
+
+
