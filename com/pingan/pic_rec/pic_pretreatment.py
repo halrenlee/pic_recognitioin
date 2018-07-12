@@ -77,7 +77,7 @@ def parsePics(src_path, suffix, tgt_path = None):
     counter = 1
     for pic_file in pic_files:
         img = Image.open(pic_file)
-        text = pytesseract.image_to_string(img, lang='eng')
+        text = pytesseract.image_to_string(img, lang='chi_sim')
         code = getCode(text)
         img = cv2.cvtColor(np.asarray(img), cv2.COLOR_RGB2BGR)
         if code is not None:
@@ -113,10 +113,16 @@ def picMatch(img, templ):
 def resize(img, width = None, height = None, inter = cv2.INTER_AREA):
     dim = None
     h, w = img.shape[:2]
-    if width is None and height:
+    if width is None and height is None:
         return img
     if width is None:
-        width = height
+        r = height / height
+        dim = (int(w * r), height)
+    else:
+        r = width / w
+        dim = (width, int(h * r))
+    resized = cv2.resize(img, dim, interpolation= inter)
+    return resized
 
 
 
