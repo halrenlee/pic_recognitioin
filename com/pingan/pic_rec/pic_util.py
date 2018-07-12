@@ -8,6 +8,10 @@ import tkinter as tk
 from tkinter import *
 from com.pingan.pic_rec.pic_pretreatment import resize
 import numpy as np
+import tkinter.filedialog as fd
+import sys
+
+# sys.setdefaultencoding('utf-8')
 
 
 def show(event,x,y,flags,param):
@@ -44,7 +48,7 @@ def nextPic(val):
     else:
         win_name = 'test' + str(counter)
         template_file = tgt_path + str(counter) + '.jpg'
-        img = cv2.imread(pics[counter - 1])
+        img = cv2.imread(pics[counter - 1].encode('gbk').decode())
         img = resize(img, 800)
         source_img = np.zeros(img.shape, np.uint8)
         source_img = img.copy()
@@ -64,6 +68,14 @@ def nextPic(val):
                 break
         cv2.destroyAllWindows()
 
+def getFilePath():
+    global pic_path, pics,msg, total,var_pic_path
+    pic_path = fd.askdirectory()
+    var_pic_path.set(pic_path)
+    pics = glob.glob(os.path.join(pic_path, suffix))
+    total = len(pics)
+    msg = '图片数量：%d/%d' % (counter, total)
+    lbl.config(text=msg)
 
 if __name__ == '__main__':
     pic_file = r'./template/004_bak.jpg'
@@ -83,10 +95,25 @@ if __name__ == '__main__':
     total = len(pics)
     msg = '图片数量：%d/%d' %(counter, total)
 
+
     win = tk.Tk()
-    win.geometry('200x200')
+    win.geometry('300x100')
     win.title('图片样本制作')
     win.resizable(width=False, height=False)
+
+    t_frame0 = Frame(win)
+    t_frame0.pack(side=TOP)
+    lbl_img = tk.Label(t_frame0, text='图片路径：')
+    lbl_img.pack(side=LEFT)
+    var_pic_path = StringVar()
+    entry_name = tk.Entry(t_frame0, textvariable= var_pic_path)
+    entry_name.pack(side = LEFT)
+    var_pic_path.set(pic_path)
+
+
+    btn_file = tk.Button(t_frame0, text='选择文件夹', command = getFilePath)
+    btn_file.pack(side=LEFT)
+
     t_frame1 = Frame(win)
     t_frame1.pack(side = TOP)
     lbl = tk.Label(t_frame1)
