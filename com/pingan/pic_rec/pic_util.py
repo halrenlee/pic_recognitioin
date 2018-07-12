@@ -46,6 +46,8 @@ def nextPic(val):
         counter -= val
         box.showinfo('系统提示', '已经是第一张')
     else:
+        msg = '图片数量：%d/%d' % (counter, total)
+        lbl.config(text=msg)
         win_name = 'test' + str(counter)
         template_file = tgt_path + str(counter) + '.jpg'
         img = cv2.imread(pics[counter - 1].encode('gbk').decode())
@@ -55,8 +57,6 @@ def nextPic(val):
         # ims_show = PhotoImage(file=pics[counter - 1])
         # cv = Canvas(t_frame3, bg='white', width=200, height=150)
         # cv.pack(side=LEFT)
-        msg = '图片数量：%d/%d' % (counter, total)
-        lbl.config(text=msg)
         cv2.namedWindow(win_name)
         cv2.setMouseCallback(win_name, show)
         while show_flag:
@@ -112,7 +112,7 @@ if __name__ == '__main__':
 
 
     btn_file = tk.Button(t_frame0, text='选择文件夹', command = getFilePath)
-    btn_file.pack(side=LEFT)
+    btn_file.pack(side=LEFT, padx=5)
 
     t_frame1 = Frame(win)
     t_frame1.pack(side = TOP)
@@ -123,11 +123,11 @@ if __name__ == '__main__':
     t_frame2 = Frame(win)
     t_frame2.pack(side=TOP)
     btn = tk.Button(t_frame2, text='上一张', command = lambda val = calc[0]:nextPic(val))
-    btn.pack(side = LEFT)
+    btn.pack(side = LEFT, padx=5)
     btn = tk.Button(t_frame2, text='当前张', command = lambda val = calc[1]:nextPic(val))
-    btn.pack(side=LEFT)
+    btn.pack(side=LEFT, padx=5)
     btn = tk.Button(t_frame2, text='下一张', command = lambda val = calc[2]:nextPic(val))
-    btn.pack(side=LEFT)
+    btn.pack(side=LEFT, padx=5)
 
     # t_frame3 = Frame(win)
     # t_frame3.pack(side=TOP)
