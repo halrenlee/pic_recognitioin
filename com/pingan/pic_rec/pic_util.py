@@ -24,11 +24,18 @@ def show(event,x,y,flags,param):
         # img = cv2.imread(pics[counter - 1])
         # img = resize(img, 800)
         img = source_img.copy()
+        img_msg = '(%dx%d)' % (pt2[0] - pt1[0], pt2[1] - pt1[1])
         img = cv2.rectangle(img, (pt1[0] - 2, pt1[1] - 2), (pt2[0] + 2, pt2[1] + 2), (0, 255, 0), 2)
+        img = cv2.rectangle(img, (pt1[0] - 3, pt1[1] - 30), (pt1[0] + 120, pt1[1]), (0, 255, 0),-1)
+        img = cv2.putText(img, img_msg, (pt1[0], pt1[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 0, 0), 2)
     elif event == cv2.EVENT_LBUTTONUP:
         draw_flag = False
         pt2 = (x, y)
+        img = source_img.copy()
         img = cv2.rectangle(img, (pt1[0] -2, pt1[1]-2), (pt2[0]+2, pt2[1]+2), (0, 255, 0), 2)
+        img_msg = '(%dx%d)' %(pt2[0]-pt1[0], pt2[1]-pt1[1])
+        img = cv2.rectangle(img, (pt1[0] - 3, pt1[1] - 30), (pt1[0] + 120, pt1[1]), (0, 255, 0), -1)
+        img = cv2.putText(img, img_msg, (pt1[0], pt1[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255,0,0), 2)
         template_img = img[pt1[1]:pt2[1], pt1[0]:pt2[0], :]
     elif event == cv2.EVENT_RBUTTONDOWN and template_img is not None:
         cv2.imwrite(template_file, template_img)
