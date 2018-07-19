@@ -81,7 +81,7 @@ def nextPic(val):
         pic_file = os.path.basename(pics[counter - 1])
         template_file = tgt_path + '/' + pic_file
         img = cv2.imread(pics[counter - 1].encode('gbk').decode())
-        img = resize(img, 800)
+        # img = resize(img, 800)
         source_img = np.zeros(img.shape, np.uint8)
         source_img = img.copy()
         # ims_show = PhotoImage(file=pics[counter - 1])
