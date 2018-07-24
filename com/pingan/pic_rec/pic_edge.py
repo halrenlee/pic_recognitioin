@@ -16,7 +16,6 @@ def imgCrop(img):
     return tgt_img
 
 
-
 if __name__ == '__main__':
     # src_path = r'E:\work\pingan_tmp\pic美团\01_食品经营许可证1'
     # tgt_path = r'E:\work\pingan_tmp\pic美团\01_食品经营许可证1_1'
